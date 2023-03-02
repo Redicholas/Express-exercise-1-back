@@ -16,7 +16,6 @@ router.get("/", function (req, res, next) {
 
 router.post("/login", (req, res, next) => {
   let user = req.body;
-  console.log("Front end login input: " + JSON.stringify(user));
   let foundUser = users.find(
     (u) => u.name === user.name && u.password === user.password
   );
