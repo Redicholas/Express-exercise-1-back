@@ -16,19 +16,14 @@ router.get("/", function (req, res, next) {
 
 router.post("/login", (req, res, next) => {
   let user = req.body;
-  console.log("backend user: " + JSON.stringify(user));
+  console.log("Front end login input: " + JSON.stringify(user));
   let foundUser = users.find(
     (u) => u.name === user.name && u.password === user.password
   );
-  if (user.name === foundUser.name && user.password === foundUser.password) {
-    console.log("Success");
-  }
-  // if (foundUser) {
-  //   console.log("found user: " + JSON.stringify(foundUser));
-
-  //   res.json(foundUser);
-  else {
-    res.status(404).json({ message: "User not found" });
+  if (foundUser) {
+    res.status(200).json({ message: "You are logged in", status: 200 });
+  } else {
+    res.status(404).json({ message: "User not found", status: 404 });
   }
 });
 
